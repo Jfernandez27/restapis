@@ -1,0 +1,26 @@
+{
+  "name": "restapis",
+  "version": "1.0.0",
+  "description": "Learning to create REST APIs",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jfernandez27/restapis.git"
+  },
+  "author": "Jesus Fernandez Machin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jfernandez27/restapis/issues"
+  },
+  "homepage": "https://github.com/Jfernandez27/restapis#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
