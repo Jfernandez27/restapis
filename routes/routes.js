@@ -7,6 +7,8 @@ module.exports = function () {
     router.post('/customers', customerClients.new);
     router.get('/customers', customerClients.getCustomers);
     router.get('/customers/:id', customerClients.getCustomer);
+    router.put('/customers/:id', customerClients.updateCustomer);
+    router.delete('/customers/:id', customerClients.deleteCustomer);
 
     return router;
 };

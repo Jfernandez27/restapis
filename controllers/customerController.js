@@ -24,10 +24,42 @@ exports.getCustomers = async (req, res, cb) => {
     }
 };
 exports.getCustomer = async (req, res, cb) => {
-    const customer = await Customers.findById(req.params.id);
-    if (!customer) {
-        res.json({ message: 'The client does not exist' });
+    try {
+        const customer = await Customers.findById(req.params.id);
+        if (!customer) {
+            return res.json({ message: 'The client does not exist' });
+        }
+        return res.json(customer);
+    } catch (error) {
+        console.log(error);
         cb();
     }
-    res.json(customer);
+};
+exports.updateCustomer = async (req, res, cb) => {
+    try {
+        const customer = await Customers.findOneAndUpdate(
+            {
+                _id: req.params.id,
+            },
+            req.body,
+            { new: true }
+        );
+
+        res.json(customer);
+    } catch (error) {
+        console.log(error);
+        cb();
+    }
+};
+exports.deleteCustomer = async (req, res, cb) => {
+    try {
+        await Customers.findOneAndDelete({
+            _id: req.params.id,
+        });
+
+        res.json({ message: 'Customer Delete!!!' });
+    } catch (error) {
+        console.log(error);
+        cb();
+    }
 };
