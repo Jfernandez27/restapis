@@ -5,11 +5,12 @@ exports.new = async (req, res, cb) => {
 
     try {
         await customer.save();
-        res.json({
+        return res.json({
             message: 'A new client was added',
         });
     } catch (error) {
         console.log(error);
+        return res.status(409).send('Invalid Operation');
         cb();
     }
 };
@@ -48,6 +49,7 @@ exports.updateCustomer = async (req, res, cb) => {
         res.json(customer);
     } catch (error) {
         console.log(error);
+        return res.status(403).send('Invalid Operation');
         cb();
     }
 };
@@ -60,6 +62,7 @@ exports.deleteCustomer = async (req, res, cb) => {
         res.json({ message: 'Customer Delete!!!' });
     } catch (error) {
         console.log(error);
+        return res.status(403).send('Invalid Operation');
         cb();
     }
 };
