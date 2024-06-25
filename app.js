@@ -26,5 +26,8 @@ app.use(cors());
 //Routes
 app.use('/', routes());
 
+// Public Folder
+app.use(express.static('uploads'));
+
 // port
 app.listen(5000);
