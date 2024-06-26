@@ -109,3 +109,17 @@ exports.delete = async (req, res, cb) => {
         cb();
     }
 };
+
+exports.search = async (req, res, cb) => {
+    try {
+        const { query } = req.params;
+        const product = await Products.find({
+            name: new RegExp(query, 'i'),
+        });
+
+        res.json(product);
+    } catch (error) {
+        console.log(error);
+        cb();
+    }
+};

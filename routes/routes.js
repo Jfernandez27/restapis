@@ -3,6 +3,7 @@ const router = express.Router();
 const customerClients = require('../controllers/customerController');
 const productController = require('../controllers/productController');
 const orderController = require('../controllers/orderController');
+const userController = require('../controllers/userController');
 
 module.exports = function () {
     //Customers
@@ -27,12 +28,18 @@ module.exports = function () {
     );
     router.delete('/products/:id', productController.delete);
 
+    router.post('/products/search/:query', productController.search);
+
     //Orders
     router.post('/orders', orderController.new);
     router.get('/orders', orderController.all);
     router.get('/orders/:id', orderController.get);
     router.put('/orders/:id', orderController.update);
     router.delete('/orders/:id', orderController.delete);
+
+    // Users
+    router.post('/register', userController.register);
+    router.post('/login', userController.login);
 
     return router;
 };
