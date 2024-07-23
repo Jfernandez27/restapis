@@ -5,10 +5,13 @@ const productController = require('../controllers/productController');
 const orderController = require('../controllers/orderController');
 const userController = require('../controllers/userController');
 
+//Middleware to protect routes
+const auth = require('../middlewares/auth');
+
 module.exports = function () {
     //Customers
     router.post('/customers', customerClients.new);
-    router.get('/customers', customerClients.getCustomers);
+    router.get('/customers', auth, customerClients.getCustomers);
     router.get('/customers/:id', customerClients.getCustomer);
     router.put('/customers/:id', customerClients.updateCustomer);
     router.delete('/customers/:id', customerClients.deleteCustomer);
